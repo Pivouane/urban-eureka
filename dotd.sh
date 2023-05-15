@@ -1,17 +1,18 @@
 #!/bin/sh
 # Script gets motd from github and downloads an image related from the internet
 
-# Get the motd from github
-wget -q https://raw.githubusercontent.com/Pivouane/urban-eureka/main/motd.txt -O /etc/motd
+#motd url
+url="https://raw.githubusercontent.com/Pivouane/urban-eureka/main/motd.txt"
 
 # get number of lines in motd
-num_lines=$(wc -l /etc/motd | awk '{print $1}')
+num_lines=$(curl -s $url | wc -l)
+
 
 # get days from time since epoch
 days=$(($(date +%s) / 86400))
 
 # get line number to print from days
-line_num=$(($days % $num_lines))
+line_num=$(($days % $num_lines + 1))
 
 # print line
-sed -n "$line_num"p /etc/motd
+curl -s $url | sed -n "$line_num"p
