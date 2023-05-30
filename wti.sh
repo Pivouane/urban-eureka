@@ -4,7 +4,7 @@
 # Example: wti.sh cat
 word=$1
 index=$2
-if [ -z $word ]; then
+if [ -z "$word" ]; then
     echo "Usage: wti.sh <word>"
     exit 1
 fi

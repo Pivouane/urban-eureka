@@ -11,7 +11,7 @@ num_lines=$(($(curl -s -H 'Cache-Control: no-cache, no-store' $url | wc -l) + 1)
 days=$(($(date +%s) / 86400))
 
 # get line number to print from days
-line_num=$(($days % $num_lines))
+line_num=$(($days % $num_lines + 1))
 
 # print line
 curl -s $url | sed -n "$line_num"p
