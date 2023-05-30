@@ -13,7 +13,7 @@ if [ -z $index ]; then
     index=$(($RANDOM % 10))
 fi
 
-word="#wallpaper $word"
+word="echo #wallpaper $word | sed 's/ /+/g'"
 
 # Get image url
 IMAGE_LINK=$((curl -s -A "Mozilla/5.0" -L deviantart.com/search?q=$word | sed 's/</\n</g' | grep '<a data-hook="deviation_link"' | sed -E 's/^.*href=\"([^\"]+)\".*$/\1/mg | head -n $index | tail -n 1'))
