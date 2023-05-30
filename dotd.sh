@@ -14,4 +14,7 @@ days=$(($(date +%s) / 86400))
 line_num=$(($days % $num_lines + 1))
 
 # print line
-curl -s $url | sed -n "$line_num"p
+motd=$(curl -s $url | sed -n "$line_num"p)
+
+echo $motd
+i3-nagbar -t warning -m "Mot of the day : $motd !" > /dev/null 2>&1 &
