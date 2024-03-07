@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+  "name": "CriEstCe?",
+  "version": "1.0.0",
+
+  "browser_action": {
+    "default_icon": "icons/daniel.jpg",
+    "default_title": "Cri est-ce?",
+    "default_popup": "popup.html"
+  },
+
+  "description" : "Guess who game from the web",
+  "permissions": [
+    "activeTab"
+  ],
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ]
+}
