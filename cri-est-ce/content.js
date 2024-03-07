@@ -88,13 +88,14 @@ window.addEventListener("load", () => {
 
         const randomIndex = Math.floor(Math.random() * squares.length);
         const randomSquare = squares[randomIndex];
-        
+
+        squares = Array.from(squares).filter((i) => i.childNodes[1].alt !== randomSquare.childNodes[1].alt);
+        console.log(squares);
         profiles.push({
           name: randomSquare.childNodes[1].alt,
           img: randomSquare.childNodes[1].src,
         });
 
-        squares[randomIndex].remove();
       }
 
       wrapProfiles(profiles);
